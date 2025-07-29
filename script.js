@@ -17,6 +17,14 @@ function Book(title, author, pages, read) {
   }
 }
 
+Book.prototype.changeReadStatus = function(){
+    if (this.readstatus === "already read"){
+        this.readstatus = "not read yet";     
+    }   else {
+        this.readstatus = "already read";
+    }
+}
+
 
 function addBookToLibrary(book, array) {
     const object = book;
@@ -45,27 +53,66 @@ for (let i of myLibrary){
     const key = Object.keys(i)[0];
     console.log(value.title);  //check-in
     console.log(value.author); //check-in
-    console.log(value.info()); //check-in
+    console.log(value.info()); 
 
     const para = document.createElement("p");
     para.classList.add("single-book")
     para.dataset.id = key
     books.appendChild(para);
     
-    const node = document.createTextNode(value.info());
-    para.appendChild(node);
+    const paraTitle = document.createElement("p");
+    para.appendChild(paraTitle)
 
+    const nodeTitle = document.createTextNode(`Title: ${value.title}`)
+    paraTitle.appendChild(nodeTitle)
+
+
+    const paraAuthor = document.createElement("p");
+    para.appendChild(paraAuthor)
+
+    const nodeAuthor = document.createTextNode(`Author: ${value.author}`)
+    paraAuthor.appendChild(nodeAuthor)
+
+    const paraPages = document.createElement("p");
+    para.appendChild(paraPages)
+
+    const nodePages = document.createTextNode(`Pages: ${value.pages}`)
+    paraPages.appendChild(nodePages)
+
+    const paraStatus = document.createElement("p");
+    para.appendChild(paraStatus)
+
+    const nodeStatus = document.createTextNode(`Read status: ${value.readstatus}`)
+    paraStatus.appendChild(nodeStatus)
+
+    const paraId = document.createElement("p");
+    para.appendChild(paraId)
+
+    const nodeId = document.createTextNode(`Book ID: ${key}`)
+    paraId.appendChild(nodeId)
+
+    //Add delete button to book
     const button = document.createElement("button")
     button.textContent = "Delete book"
     button.classList.add("delete-book")
     para.appendChild(button)
-   
-    console.log(para.dataset.id)
 
     // Delete book from UI
     button.addEventListener("click", () => {
     para.remove()
-})
+    })
+
+     //Add button to change readStatus
+    const readStatusBtn = document.createElement("button")
+    readStatusBtn.textContent = "Change read status"
+    readStatusBtn.classList.add("change-read-status")
+    para.appendChild(readStatusBtn)
+
+    readStatusBtn.addEventListener("click", () => {
+        value.changeReadStatus(); // use the prototype method
+        nodeStatus.nodeValue = `Read status: ${value.readstatus}`;
+    })
+
 }
 
 
@@ -91,3 +138,11 @@ submitButton.addEventListener("click", (event) => {
 event.preventDefault();
 dialog.close();
 });
+
+
+/* 
+NOTE: 
+The dialog is not adding book to the library yet. Needs update
+
+
+*/
