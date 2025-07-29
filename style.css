@@ -6,7 +6,6 @@
 html, body {
     background-color: rgb(251, 244, 194);
     margin: auto;  
-    padding: 0;
     height: 100vh;
     width: 100vw;
 }
@@ -21,46 +20,46 @@ footer{
 .container {
     margin: auto;
     background-color: whitesmoke;
-    width: 100vw;
-    height: 100%;
+    width: 80%;
+    height: 85%;
     display: grid;
     grid-template-rows: 1fr 5fr;
     justify-content: center;
-    align-items: center;
+
 }
 
 .top-section {
-    width: 100vw;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    padding: 50px
+    margin: 0 auto;
+    align-self: center;
+
 }
 
 .bottom-section {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 200px;
+    
 }
 
-.bottom-section .inner-box {
+.bottom-section h2 {
+    text-align: center;
+}
+
+.books{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    gap: 25px;
+    width: 80%;
+    height: 80%;
+    gap: 15px;
+    margin: 0 auto;
+    background-color: rgb(232, 229, 224);
+    padding: 15px;
+    
+
 }
 
-.book-card{
-    height: 300px;
-    width: 300px;
-    background-color: aquamarine;
-    border: 2px solid black;
-}
-
-.book-card .inner-box {
+.books p {
+    background-color: rgb(255, 255, 255);
     padding: 10px;
-    display: grid;
-    grid-template-rows: repeat(5, 1fr);
+    border-radius: 10px;
+    margin: auto 0;
+    
 }

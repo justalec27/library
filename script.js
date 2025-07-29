@@ -19,7 +19,7 @@ const myLibrary = []
 
 const innerBox= document.querySelector(".bottom-section .inner-box")
 
-function createCard(title, author, pages, status, bookId) {
+function createCard() {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     innerBox.appendChild(bookCard)
@@ -30,22 +30,27 @@ function createCard(title, author, pages, status, bookId) {
     const node = document.createTextNode("Title")
     bookCard.appendChild(title)
     title.appendChild(node)
+    cardInnerBox.appendChild(title)
     const author = document.createElement("p")
     const node2 = document.createTextNode("Author")
     bookCard.appendChild(author)
     author.appendChild(node2)
+    cardInnerBox.appendChild(author)
      const pages = document.createElement("p")
     const node3 = document.createTextNode("Pages:")
     bookCard.appendChild(pages)
     pages.appendChild(node3)
+    cardInnerBox.appendChild(pages)
      const status = document.createElement("p")
     const node4 = document.createTextNode("Status:")
     bookCard.appendChild(status)
     status.appendChild(node4)
+    cardInnerBox.appendChild(status)
      const bookId = document.createElement("p")
     const node5 = document.createTextNode("Book ID:")
     bookCard.appendChild(bookId)
     bookId.appendChild(node5)
+    cardInnerBox.appendChild(bookId)
 
 }
 
@@ -92,7 +97,6 @@ for (let i of myLibrary){
     const node = document.createTextNode(value.info());
     para.appendChild(node)
     books.appendChild(para)
-    createCard();
 
 }
 
