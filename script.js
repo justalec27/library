@@ -40,23 +40,39 @@ addBookToLibrary(atomicHabits2, myLibrary)
 const books = document.querySelector(".books")
 
 for (let i of myLibrary){
-    console.log(i);
+    //key book properties from book
     const value = Object.values(i)[0];
+    const key = Object.keys(i)[0];
     console.log(value.title);  //check-in
     console.log(value.author); //check-in
     console.log(value.info()); //check-in
+
     const para = document.createElement("p");
+    para.classList.add("single-book")
+    para.dataset.id = key
+    books.appendChild(para);
+    
     const node = document.createTextNode(value.info());
     para.appendChild(node);
-    books.appendChild(para);
 
+    const button = document.createElement("button")
+    button.textContent = "Delete book"
+    button.classList.add("delete-book")
+    para.appendChild(button)
+   
+    console.log(para.dataset.id)
+
+    // Delete book from UI
+    button.addEventListener("click", () => {
+    para.remove()
+})
 }
 
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".new-book");
 const closeButton = document.querySelector("dialog button");
-const submitButton = document.querySelector("submit-btn")
+const submitButton = document.querySelector("#submit-btn")
 
 // "Show the dialog" button opens the dialog modally
 showButton.addEventListener("click", () => {
@@ -72,7 +88,6 @@ closeButton.addEventListener("click", () => {
 
 // "Submit" the details in the dialog
 submitButton.addEventListener("click", (event) => {
-event.preventDefault()
-})
-
-
+event.preventDefault();
+dialog.close();
+});
