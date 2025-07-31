@@ -51,9 +51,17 @@ function displayBook(){
         const value = Object.values(i)[0];
         const key = Object.keys(i)[0];
 
+        console.log(value)
+        console.log(key)
+
+        if (document.getElementById(key)){
+            continue
+        } else{
+
+        //Display book
         const para = document.createElement("p");
         para.classList.add("single-book")
-        para.dataset.id = key
+        para.id = key;
         books.appendChild(para);
         
         const paraTitle = document.createElement("p");
@@ -107,9 +115,9 @@ function displayBook(){
             value.changeReadStatus(); // use the prototype method
             nodeStatus.nodeValue = `Read status: ${value.readstatus}`;
         })
-
+      }
     }
-    }
+}
 
 displayBook()
 
@@ -143,12 +151,16 @@ submitButton.addEventListener("click", (event) => {
 
     const newBook = new Book(title, author, pages, read)
     addBookToLibrary(newBook, myLibrary)
-    showBooks()  // change that it only goes through the last added array item
+    // showBooks()  // change that it only goes through the last added array item
    
     dialog.close();
+    displayBook()
+    document.getElementById("title").value = ""
+    document.querySelector("#author").value = ""
+    document.getElementById("pages").value = ""
 });
 
-
+console.log(myLibrary)
 /* 
 NOTE: 
 The dialog is not adding book to the library yet. Needs update.
