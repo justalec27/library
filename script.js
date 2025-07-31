@@ -32,89 +32,86 @@ function addBookToLibrary(book, array) {
     array.push({[id] : object});
 }
 
-console.log(myLibrary); //check-in
-
 const harryPotter = new Book("Harry Potter", "J.K. Rowling", 598, "not read yet")
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
 const atomicHabits = new Book("Atomic Habits", "James Clear", 548, "already read")
-const atomicHabits2 = new Book("Atomic Habits", "James Clear", 548, "already read")
 
 
 addBookToLibrary(harryPotter, myLibrary)
 addBookToLibrary(theHobbit, myLibrary)
 addBookToLibrary(atomicHabits, myLibrary)
-addBookToLibrary(atomicHabits2, myLibrary)
 
 const books = document.querySelector(".books")
 
-for (let i of myLibrary){
-    //key book properties from book
-    const value = Object.values(i)[0];
-    const key = Object.keys(i)[0];
-    console.log(value.title);  //check-in
-    console.log(value.author); //check-in
-    console.log(value.info()); 
 
-    const para = document.createElement("p");
-    para.classList.add("single-book")
-    para.dataset.id = key
-    books.appendChild(para);
-    
-    const paraTitle = document.createElement("p");
-    para.appendChild(paraTitle)
+function displayBook(){
 
-    const nodeTitle = document.createTextNode(`Title: ${value.title}`)
-    paraTitle.appendChild(nodeTitle)
+    for (let i of myLibrary){
+        //key book properties from book
+        const value = Object.values(i)[0];
+        const key = Object.keys(i)[0];
 
+        const para = document.createElement("p");
+        para.classList.add("single-book")
+        para.dataset.id = key
+        books.appendChild(para);
+        
+        const paraTitle = document.createElement("p");
+        para.appendChild(paraTitle)
 
-    const paraAuthor = document.createElement("p");
-    para.appendChild(paraAuthor)
+        const nodeTitle = document.createTextNode(`Title: ${value.title}`)
+        paraTitle.appendChild(nodeTitle)
 
-    const nodeAuthor = document.createTextNode(`Author: ${value.author}`)
-    paraAuthor.appendChild(nodeAuthor)
+        const paraAuthor = document.createElement("p");
+        para.appendChild(paraAuthor)
 
-    const paraPages = document.createElement("p");
-    para.appendChild(paraPages)
+        const nodeAuthor = document.createTextNode(`Author: ${value.author}`)
+        paraAuthor.appendChild(nodeAuthor)
 
-    const nodePages = document.createTextNode(`Pages: ${value.pages}`)
-    paraPages.appendChild(nodePages)
+        const paraPages = document.createElement("p");
+        para.appendChild(paraPages)
 
-    const paraStatus = document.createElement("p");
-    para.appendChild(paraStatus)
+        const nodePages = document.createTextNode(`Pages: ${value.pages}`)
+        paraPages.appendChild(nodePages)
 
-    const nodeStatus = document.createTextNode(`Read status: ${value.readstatus}`)
-    paraStatus.appendChild(nodeStatus)
+        const paraStatus = document.createElement("p");
+        para.appendChild(paraStatus)
 
-    const paraId = document.createElement("p");
-    para.appendChild(paraId)
+        const nodeStatus = document.createTextNode(`Read status: ${value.readstatus}`)
+        paraStatus.appendChild(nodeStatus)
 
-    const nodeId = document.createTextNode(`Book ID: ${key}`)
-    paraId.appendChild(nodeId)
+        const paraId = document.createElement("p");
+        para.appendChild(paraId)
 
-    //Add delete button to book
-    const button = document.createElement("button")
-    button.textContent = "Delete book"
-    button.classList.add("delete-book")
-    para.appendChild(button)
+        const nodeId = document.createTextNode(`Book ID: ${key}`)
+        paraId.appendChild(nodeId)
 
-    // Delete book from UI
-    button.addEventListener("click", () => {
-    para.remove()
-    })
+        //Add delete button to book
+        const button = document.createElement("button")
+        button.textContent = "Delete book"
+        button.classList.add("delete-book")
+        para.appendChild(button)
 
-     //Add button to change readStatus
-    const readStatusBtn = document.createElement("button")
-    readStatusBtn.textContent = "Change read status"
-    readStatusBtn.classList.add("change-read-status")
-    para.appendChild(readStatusBtn)
+        // Delete book from UI
+        button.addEventListener("click", () => {
+        para.remove()
+        })
 
-    readStatusBtn.addEventListener("click", () => {
-        value.changeReadStatus(); // use the prototype method
-        nodeStatus.nodeValue = `Read status: ${value.readstatus}`;
-    })
+        //Add button to change readStatus
+        const readStatusBtn = document.createElement("button")
+        readStatusBtn.textContent = "Change read status"
+        readStatusBtn.classList.add("change-read-status")
+        para.appendChild(readStatusBtn)
 
-}
+        readStatusBtn.addEventListener("click", () => {
+            value.changeReadStatus(); // use the prototype method
+            nodeStatus.nodeValue = `Read status: ${value.readstatus}`;
+        })
 
+    }
+    }
+
+displayBook()
 
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector(".new-book");
@@ -134,15 +131,28 @@ closeButton.addEventListener("click", () => {
 
 
 // "Submit" the details in the dialog
+
+
 submitButton.addEventListener("click", (event) => {
-event.preventDefault();
-dialog.close();
+    event.preventDefault();
+
+    const title = document.getElementById("title").value
+    const author = document.querySelector("#author").value
+    const pages = document.getElementById("pages").value
+    const read = document.getElementById("yes").checked ? "already read" : "not read yet"
+
+    const newBook = new Book(title, author, pages, read)
+    addBookToLibrary(newBook, myLibrary)
+    showBooks()  // change that it only goes through the last added array item
+   
+    dialog.close();
 });
 
 
 /* 
 NOTE: 
-The dialog is not adding book to the library yet. Needs update
+The dialog is not adding book to the library yet. Needs update.
+UPDATE: I solved how to add a new book the page. Check row 146 again
 
 
 */
