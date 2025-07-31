@@ -4,14 +4,18 @@
 
 
 html, body {
-    background-color: rgb(251, 244, 194);
     margin: auto;  
     height: 100vh;
     width: 100vw;
+    font-family: "Roboto", sans-serif;
+  
+
+    
 }
 
 header {
     text-align: center;
+    padding-top: 50px;
 }
 
 footer{
@@ -19,7 +23,6 @@ footer{
 }
 .container {
     margin: auto;
-    background-color: whitesmoke;
     width: 80%;
     height: 85%;
     display: grid;
@@ -47,7 +50,6 @@ footer{
     height: 500px;
     gap: 15px;
     margin: 0 auto;
-    background-color: rgb(232, 229, 224);
     padding: 15px;
     
 
@@ -59,10 +61,14 @@ footer{
     border-radius: 35px;
     width: 200px;
     height: 45px;
-    background-color: rgb(39, 105, 246);
+    background-color: rgb(0, 0, 0);
     color: white;
     border: none;
     font-weight: bold;
+}
+
+.new-book:hover {
+    background-color: rgb(79, 233, 233);
 }
 
 ::backdrop {
@@ -78,10 +84,39 @@ footer{
 
 .single-book {
     display: grid;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(243, 239, 239);
     padding: 10px;
     border-radius: 10px;
     align-content: start;
     max-height:max-content;
+    border: 2px solid black;
+    box-shadow: 5px 10px;
     
+}
+
+.single-book button {
+  background-color: #FBEEE0;
+  border-radius: 15px;
+  width: 150px;
+  padding: 8px;
+  border: 1px solid #422800;
+  font-weight: bold;
+}
+
+
+.delete-book {
+    margin-bottom: 10px;
+    justify-self: center;
+}
+
+.change-read-status {
+    justify-self: center;
+}
+
+.delete-book:hover {
+    transform: rotate(3deg)
+}
+
+.new-book:hover {
+    background-color: bisque;
 }
