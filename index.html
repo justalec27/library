@@ -6,13 +6,15 @@
     <title>My Library</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header> 
         <h1>Welcome to our Library</h1>
     </header>
-    
-    <div class="container">
+    <div class="main-content">
         <div class="top-section">
 
             <dialog id="favDialog">
@@ -35,17 +37,11 @@
                 <button formmethod="dialog">Cancel</button>
                 <input type="submit" id="submit-btn">
             </dialog>
-            <button class="new-book">New Book</button>
+            <button class="new-book">Add Book</button>
 
-            
+                
         </div> 
-        <div class="bottom-section">
-            <h2>Your books will be shown here</h2> 
-            <div class="books">
-
-            </div>
-        </div>
-        
+            <div class="books"> </div>
     </div>
     <footer> 
     <p>Created by Alec Qiu</p>

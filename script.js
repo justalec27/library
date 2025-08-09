@@ -3,17 +3,16 @@ const myLibrary = []
 
 const innerBox= document.querySelector(".bottom-section .inner-box")
 
-
-function Book(title, author, pages, read) {
-  if (!new.target){
-    throw Error("You must use the 'new' operator to call the constructor");
-  }
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readstatus = read;
-  this.info = function() {
-    return (`${title} by ${author}, ${pages} pages, ${read}`)
+//  new class Declaration
+class Book { 
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readstatus = read;
+    this.info = function () {
+      return (`${title} by ${author}, ${pages} pages, ${read}`)
+    }
   }
 }
 
@@ -87,12 +86,6 @@ function displayBook(){
 
         const nodeStatus = document.createTextNode(`Read status: ${value.readstatus}`)
         paraStatus.appendChild(nodeStatus)
-
-        const paraId = document.createElement("p");
-        para.appendChild(paraId)
-
-        const nodeId = document.createTextNode(`Book ID: ${key}`)
-        paraId.appendChild(nodeId)
 
         //Add delete button to book
         const button = document.createElement("button")

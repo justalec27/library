@@ -4,13 +4,16 @@
 
 
 html, body {
-    margin: auto;  
+    margin: 0;  
     height: 100vh;
     width: 100vw;
     font-family: "Roboto", sans-serif;
-  
+    display: flex;
+    flex-direction: column;   
+}
 
-    
+.main-content {
+  flex: 1; 
 }
 
 header {
@@ -32,15 +35,10 @@ footer{
 }
 
 .top-section {
-    margin: 0 auto;
-    align-self: center;
+    display: flex;
 
 }
 
-
-.bottom-section h2 {
-    text-align: center;
-}
 
 .books{
     display: grid;
@@ -52,7 +50,6 @@ footer{
     margin: 0 auto;
     padding: 15px;
     
-
 }
 
 
@@ -65,10 +62,8 @@ footer{
     color: white;
     border: none;
     font-weight: bold;
-}
-
-.new-book:hover {
-    background-color: rgb(79, 233, 233);
+    margin: auto;
+    text-align: center;
 }
 
 ::backdrop {
@@ -91,6 +86,7 @@ footer{
     max-height:max-content;
     border: 2px solid black;
     box-shadow: 5px 10px;
+    min-width: 250px;
     
 }
 
@@ -117,6 +113,10 @@ footer{
     transform: rotate(3deg)
 }
 
+.change-read-status:hover {
+    transform: rotate(3deg)
+}
+
 .new-book:hover {
-    background-color: bisque;
+    background-color: rgb(52, 208, 243);
 }
