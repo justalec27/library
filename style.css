@@ -10,10 +10,15 @@ html, body {
     font-family: "Roboto", sans-serif;
     display: flex;
     flex-direction: column;   
+    background-image: linear-gradient(to top, #6B72DA ,#7450AC)
 }
 
 .main-content {
   flex: 1; 
+}
+
+button {
+    cursor: pointer;
 }
 
 header {
@@ -91,11 +96,10 @@ footer{
 }
 
 .single-book button {
-  background-color: #FBEEE0;
+  background-color: #F9D731;
   border-radius: 15px;
   width: 150px;
   padding: 8px;
-  border: 1px solid #422800;
   font-weight: bold;
 }
 
@@ -110,7 +114,7 @@ footer{
 }
 
 .delete-book:hover {
-    transform: rotate(3deg)
+    transform: rotate(3deg);
 }
 
 .change-read-status:hover {
@@ -118,5 +122,12 @@ footer{
 }
 
 .new-book:hover {
-    background-color: rgb(52, 208, 243);
+    background-color: white;
+    color: black;
+
+}
+
+h1 {
+    color: white;
+    font-size: 48px;
 }
